@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QPushButton, QWidget, QLabel, QApplication, QLineEdit, QComboBox, QPlainTextEdit, QMessageBox
-
+import DBConnect
 
 class Search_Window(QWidget):
     def __init__(self, parent=None):
@@ -17,6 +17,7 @@ class Search_Window(QWidget):
         Label1 = QLabel("이름 : ", self)
         Label2 = QLabel("위치 : ", self)
         Label3 = QLabel("설명 : ", self)
+
         self.txt1 = QComboBox(self)
         self.txt2 = QLineEdit(self)
         self.txt3 = QPlainTextEdit(self)
@@ -46,13 +47,37 @@ class Search_Window(QWidget):
         self.txt2.setReadOnly(True)
         self.txt3.setReadOnly(True)
 
+        combo = DBConnect.init_name()
+        for i in range(len(combo)):
+            self.txt1.addItem(combo[i][0])
+
+        self.resize(540, 500)
+        self.setWindowTitle('검색기')
+
+
+    def ComboAction(self, event):
+        combo = DBConnect.search_combo(self.txt1.currentText())
+        a = combo[0][1].split(",")
+        Text = ""
+        for i in range(len(a)):
+            Text = Text + str(DBConnect.search_place(a[i])[0][0])
+            if len(a) != (i + 1):
+                Text = Text + ", "
+
+        self.txt2.setText(Text)
+        self.txt3.setPlainText(combo[0][0])
+
+        self.Event_txt1 = self.txt1.currentText()
+        self.Event_txt2 = combo[0][0]
+           
+
     def btnAction(self, event):
         self.close()
 
-    # 추가 부분
+
     def btn2Action(self, event):
         QMessageBox.warning(self, self.Event_txt1, self.Event_txt2)
-    #
+
 
 
 if __name__ == "__main__":

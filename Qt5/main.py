@@ -21,7 +21,7 @@ class Main_Menubar(QWidget):
         grid.addWidget(btn1)
         grid.addWidget(btn2)
 
-        self.setWindowTitle("전국 명소 찾기")
+        self.setWindowTitle("Qt5")
         self.resize(300, 300)
 
     def search(self):
