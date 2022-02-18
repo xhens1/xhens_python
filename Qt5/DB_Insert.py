@@ -15,7 +15,7 @@ class InsertData(QWidget):
 
     def initUI(self):
         Label1 = QLabel("이름 : ", self)
-        Label2 = QLabel("대상 : ", self)
+        Label2 = QLabel("위치 : ", self)
         Label3 = QLabel("설명 : ", self)
         self.Label4 = QLabel("", self)
 
@@ -25,7 +25,7 @@ class InsertData(QWidget):
 
         self.btn1 = QPushButton("추가하기", self)     
         self.btn2 = QPushButton("돌아가기", self)      
-        self.btn3 = QPushButton("대상 선택", self)      
+        self.btn3 = QPushButton("위치 선택", self)      
 
         self.txt2.setReadOnly(True)
 
@@ -103,7 +103,7 @@ class insert_place(QWidget):
     def initUI(self):
         self.data = []
         self.data.clear()
-        Label1 = QLabel("대상 선택 : ",self)
+        Label1 = QLabel("위치 선택 : ",self)
 
         self.txt1 = QComboBox(self)
         self.txt2 = QLineEdit(self)
