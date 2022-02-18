@@ -17,7 +17,7 @@ def select(search, where_1="", where_2=""):
 def init_name():
     conn = pymysql.connect(host='SQL_IP', port=60002, user='아이디', password='비번', db='Qt5_test', charset='utf8')
     curs = conn.cursor()
-    sql = "select name from attack;"
+    sql = "select name from Table_name;"
     curs.execute(sql)
 
     rows = curs.fetchall()
@@ -28,7 +28,7 @@ def init_name():
 def search_combo(search):
     conn = pymysql.connect(host='SQL_IP', port=60002, user='아이디', password='비번', db='Qt5_test', charset='utf8')
     curs = conn.cursor()
-    sql = "select explanation, target from attack where name = '" + search + "';"
+    sql = "select explanation, place from name where name = '" + search + "';"
     curs.execute(sql)
 
     rows = curs.fetchall()
@@ -39,7 +39,7 @@ def search_combo(search):
 def search_place(search):
     conn = pymysql.connect(host='SQL_IP', port=60002, user='아이디', password='비번', db='Qt5_test', charset='utf8')
     curs = conn.cursor()
-    sql = "select target_name from target where No = " + search + ";"
+    sql = "select place_name from place where No = " + search + ";"
     curs.execute(sql)
 
     rows = curs.fetchall()
@@ -50,7 +50,7 @@ def search_place(search):
 def insert_place(insert):
     conn = pymysql.connect(host='SQL_IP', port=60002, user='아이디', password='비번', db='Qt5_test', charset='utf8')
     curs = conn.cursor()
-    sql = "insert into target(target_name) values('" + insert + "');"
+    sql = "insert into place(place_name) values('" + insert + "');"
 
     curs.execute(sql)
     conn.commit()
@@ -60,7 +60,7 @@ def insert_place(insert):
 def init_place():
     conn = pymysql.connect(host='SQL_IP', port=60002, user='아이디', password='비번', db='Qt5_test', charset='utf8')
     curs = conn.cursor()
-    sql = "select No, target_name from target;"
+    sql = "select No, place_name from place;"
     curs.execute(sql)
 
     rows = curs.fetchall()
@@ -71,7 +71,7 @@ def init_place():
 def insert_explan(name, explanation, target):
     conn = pymysql.connect(host='SQL_IP', port=60002, user='아이디', password='비번', db='Qt5_test', charset='utf8')
     curs = conn.cursor()
-    sql = "insert into attack(name, explanation, target) values('" + name + "', '" + explanation + "', '" + target + "');"
+    sql = "insert into name(table_name, explanation, place) values('" + name + "', '" + explanation + "', '" + target + "');"
 
     curs.execute(sql)
     conn.commit()
