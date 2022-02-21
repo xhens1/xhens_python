@@ -2,3 +2,4 @@
 
 ### MySql 서버에서 데이터 가져오기 추가
 ### MySql INSERT 부분 추가
+### pyinstaller 이용해 main.exe 생성
